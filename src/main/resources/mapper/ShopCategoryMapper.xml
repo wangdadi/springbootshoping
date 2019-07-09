@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wd.springboot.springbootshoping.dao.ShopCategoryDao">
+      <select id="findShopCategory" resultType="com.wd.springboot.springbootshoping.entity.ShopCategory">
+          select
+          shop_category_id,
+          shop_category_name,
+          shop_category_desc,
+          shop_category_img,
+          priority,
+          create_time,
+          update_time,
+          parent_id
+          from  tb_shop_category
+          <where>
+              <if test="shopCategory!=null">
+                  and parent_id is not null
+              </if>
+              <if test="shopCategory.shopParentId!=null">
+                  and parent_id=#{shopCategory.shopParentId.shopCategoryId}
+              </if>
+          </where>
+          order by
+          priority desc
+      </select>
+      <insert id="insertShopCategory" parameterType="com.wd.springboot.springbootshoping.entity.ShopCategory">
+          insert  into tb_shop_category
+          (shop_category_name,
+          shop_category_desc,
+          shop_category_img,
+          priority,
+          create_time,
+          update_time,
+          parent_id) values (#{shopCategoryName},#{shopCategoryDesc},#{shopCategoryImg})
+      </insert>
+</mapper>

@@ -1,0 +1,21 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+#配置端口
+server:
+  port: 9999
+#springboot 整合Mybatis
+mybatis:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  config-location: classpath:mybatis-config.xml
+
+#logback 日志信息的配置
+#logging:
+  #config-location: classpath:logback-config.xml
+  #path: E:/logs/springbootshopinglogs
+  #level:
+     #com:
+       #wd:
+         #springboot:
+           #springbootshoping: debug
+

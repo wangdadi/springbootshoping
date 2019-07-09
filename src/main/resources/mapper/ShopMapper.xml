@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wd.springboot.springbootshoping.dao.ShopDao">
+    <insert id="insertShop" useGeneratedKeys="true" keyProperty="shopId" keyColumn="shop_id">
+        insert into tb_shop (owner_id,area_id,shop_category_id,shop_name,shop_desc,shop_address,phone,shop_img,priority,create_time,update_time,enable_status,advice)
+        values
+        (#{personInfo.userId},#{area.areaId},#{shopCategory.shopCategoryId},
+        #{shopName},#{shopDesc},#{shopAddress},#{phone},
+        #{shopImg},#{priority},#{createTime},#{updateTime},
+        #{enableStatus},#{advice})
+    </insert>
+    <update id="updateShop" parameterType="com.wd.springboot.springbootshoping.entity.Shop">
+        update tb_shop 
+        <set>
+            <if test="shopName!=null">
+                shop_name=#{shopName},
+            </if>
+            <if test="shopDesc!=null">
+                shop_desc=#{shopDesc},
+            </if>
+            <if test="shopAddress!=null">
+                shop_address=#{shopAddress},
+            </if>
+            <if test="phone!=null">
+                phone=#{phone},
+            </if>
+            <if test="shopImg!=null">
+                shop_img=#{shopImg},
+            </if>
+            <if test="priority!=null">
+                priority=#{priority},
+            </if>
+            <if test="enableStatus!=null">
+                enable_status=#{enableStatus},
+            </if>
+            <if test="advice!=null">
+                advice=#{advice},
+            </if>
+            <if test="updateTime!=null">
+                update_time=#{updateTime},
+            </if>
+            <if test="area!=null">
+                area_id=#{area.areaId},
+            </if>
+            <if test="shopCategory!=null">
+                shop_category_id=#{shopCategory.shopCategoryId},
+            </if>
+            <if test="personInfo!=null">
+                owner_id=#{personInfo.userId}
+            </if>
+        </set>
+        <where>
+            shop_id=#{shopId}
+        </where>
+    </update>
+</mapper>
