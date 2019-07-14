@@ -11,8 +11,8 @@ import com.wd.springboot.springbootshoping.service.AreaService;
 import com.wd.springboot.springbootshoping.service.ShopCategoryService;
 import com.wd.springboot.springbootshoping.service.ShopService;
 import com.wd.springboot.springbootshoping.util.HttpServletRequestUtil;
-
 import com.wd.springboot.springbootshoping.util.KaptchaUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

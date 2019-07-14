@@ -22,4 +22,21 @@ public interface ShopService {
      * @return
      */
     ShopDto addShop(Shop shop, InputStream shopImageInputStream,String fileName) throws ServiceException;
+
+    /**
+     * 根据店铺Id获取店铺信息
+     * @param shopId
+     * @return
+     */
+    Shop queryByShopId(long shopId);
+
+    /**
+     * 更新店铺信息
+     * @param shop  店铺信息
+     * @param shopImageInputStream  更新店铺图片
+     * @param fileName  图片名
+     * @return
+     * @throws ServiceException
+     */
+    ShopDto updateShop(Shop shop, InputStream shopImageInputStream,String fileName) throws ServiceException;
 }

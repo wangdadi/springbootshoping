@@ -20,7 +20,7 @@ public class Shop {
     /**
      * 店铺Id
      */
-    private long shopId;
+    private Long shopId;
     /**
      * 店铺名称
      */

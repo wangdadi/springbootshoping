@@ -5,6 +5,7 @@ import com.wd.springboot.springbootshoping.entity.PersonInfo;
 import com.wd.springboot.springbootshoping.entity.Shop;
 import com.wd.springboot.springbootshoping.entity.ShopCategory;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class ShopDaoTest {
     @Autowired
     private ShopDao shopDao;
     @Test
+    //@Ignore
     public void insertShop(){
         Shop shop=new Shop();
         Area area=new Area();
@@ -48,9 +50,11 @@ public class ShopDaoTest {
         shop.setCreateTime(new Date());
         shop.setUpdateTime(shop.getCreateTime());
         Integer result = shopDao.insertShop(shop);
+        System.out.println(result);
         Assert.assertEquals(1,(long)result);
     }
     @Test
+    @Ignore
     public void updateShop(){
         Shop shop=new Shop();
         shop.setShopId(1L);
@@ -61,5 +65,14 @@ public class ShopDaoTest {
         shop.setUpdateTime(new Date());
         Integer result = shopDao.updateShop(shop);
         Assert.assertEquals(1,(long)result);
+    }
+    @Test
+    public void queryByShopId(){
+        long shopId=1;
+        Shop shop = shopDao.queryByShopId(shopId);
+        System.out.println(shop.getArea().getAreaId());
+        System.out.println(shop.getArea().getAreaName());
+        System.out.println(shop.getShopCategory().getShopCategoryName());
+        System.out.println(shop.getShopCategory().getShopCategoryId());
     }
 }

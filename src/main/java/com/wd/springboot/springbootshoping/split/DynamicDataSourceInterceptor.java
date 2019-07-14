@@ -27,7 +27,7 @@ import java.util.Properties;
              @Signature(type = Executor.class,method = "query",args = {MappedStatement.class,Object.class, RowBounds.class, ResultHandler.class})})
 public class DynamicDataSourceInterceptor implements Interceptor {
     private static Logger logger=LoggerFactory.getLogger(DynamicDataSourceInterceptor.class);
-    private static String REGEX=".*insert\\u0020.*|.*update\\u0020.*|.*delete.*";
+    private static final String REGEX=".*insert\\u0020.*|.*update\\u0020.*|.*delete\\u0020.*";
     /**
      * 拦截目标对象
      * @param invocation
@@ -66,7 +66,7 @@ public class DynamicDataSourceInterceptor implements Interceptor {
                      */
                     BoundSql boundSql=mappedStatement.getSqlSource().getBoundSql(objects[1]);
                     //将字符装换为简体中文的小写
-                    String sql = boundSql.getSql().toLowerCase(Locale.CHINA).replaceAll("\\t\\n\\r", " ");
+                    String sql = boundSql.getSql().toLowerCase(Locale.CHINA).replaceAll("[\\t\\n\\r]", " ");
                     if (sql.matches(REGEX)){
                         dbKey=DynamicDataSourceHolder.MASTER_DB;
                     }else {

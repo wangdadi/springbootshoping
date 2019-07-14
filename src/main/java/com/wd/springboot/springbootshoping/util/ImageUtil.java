@@ -2,8 +2,6 @@ package com.wd.springboot.springbootshoping.util;
 
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -117,5 +115,24 @@ public class ImageUtil {
                  * 压缩原来图片的80%
                  */
                 .outputQuality(0.8f).toFile("\\1new.jpg");
+    }
+
+    /**
+     * 判断storePath(存储路径)是文件还是文件目录
+     * 在更新图片时判断图片是否已经存在,如果已经存在则需要删除原有图片或路径
+     * @param storePath
+     */
+    public static void deleteFileOrPath(String storePath){
+        File fileOrPath=new File(PathUtil.getImageBasePath()+storePath);
+        if (fileOrPath.exists()){
+            //如果是文件夹
+            if (fileOrPath.isDirectory()){
+                File file[] =fileOrPath.listFiles();
+                for (int i=0;i<file.length;i++){
+                    file[i].delete();
+                }
+            }
+        }
+        fileOrPath.delete();
     }
 }

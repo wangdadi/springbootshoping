@@ -5,9 +5,9 @@ spring:
 server:
   port: 9999
 #springboot 整合Mybatis
-mybatis:
-  mapper-locations: classpath:/mapper/*Mapper.xml
-  config-location: classpath:mybatis-config.xml
+#mybatis:
+  #mapper-locations: classpath:/mapper/*Mapper.xml
+  #config-location: classpath:mybatis-config.xml
 
 #logback 日志信息的配置
 #logging:

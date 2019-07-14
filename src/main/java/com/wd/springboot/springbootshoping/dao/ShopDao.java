@@ -1,7 +1,6 @@
 package com.wd.springboot.springbootshoping.dao;
 
 import com.wd.springboot.springbootshoping.entity.Shop;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * ClassName:ShopDao
@@ -25,4 +24,11 @@ public interface ShopDao {
      * @return
      */
     Integer updateShop(Shop shop);
+
+    /**
+     * 根据店铺Id查询店铺信息
+     * @param shopId
+     * @return
+     */
+    Shop queryByShopId(long shopId);
 }

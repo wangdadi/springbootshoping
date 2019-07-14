@@ -56,4 +56,14 @@ public class ShopServiceImplTest {
         ShopDto shopDto = shopService.addShop(shop,is,shopImage.getName());
         Assert.assertEquals(ShopStateEnum.NEWSHOP.getState(),shopDto.getState());
     }
+    @Test
+    public void updateShop() throws FileNotFoundException{
+        Shop shop=new Shop();
+        shop.setShopId(14L);
+        shop.setShopName("测试店铺修改");
+        File shopImage=new File("E:\\测试修改.png");
+        InputStream is=new FileInputStream(shopImage);
+        ShopDto shopDto = shopService.updateShop(shop, is, "测试修改.png");
+        System.out.println("新的图片地址为:"+shopDto.getShop().getShopImg());
+    }
 }
