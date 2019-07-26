@@ -84,7 +84,6 @@ public class DynamicDataSourceInterceptor implements Interceptor {
         logger.debug("设置方法为 [{}] 使用的是 [{}], sql类型SqlCommandType [{}].. ",mappedStatement.getId(),dbKey,mappedStatement.getSqlCommandType().name());
          DynamicDataSourceHolder.setDbType(dbKey);
         //执行拦截对象真正的方法
-        System.out.println("执行拦截对象真正的方法"+invocation.proceed());
          return invocation.proceed();
     }
 

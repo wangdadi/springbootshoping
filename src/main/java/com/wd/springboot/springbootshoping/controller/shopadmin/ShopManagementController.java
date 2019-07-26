@@ -135,4 +135,30 @@ public class ShopManagementController {
             return map;
         }
     }
+
+    /**
+     * 根据店铺Id查询店铺信息
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/getShopId",method = RequestMethod.POST)
+    public Map<String,Object> getShopById(HttpServletRequest request){
+        Map<String,Object> map = new HashMap<>(16);
+        Long shopId = HttpServletRequestUtil.getLong(request, "shopId");
+        if (shopId>-1){
+            try {
+                Shop shop = shopService.queryByShopId(shopId);
+                List<Area> areaList = areaService.queryArea();
+                map.put("shop", shop);
+                map.put("areaList", areaList);
+                map.put("success", true);
+            }catch (Exception e){
+                map.put("error",false);
+                map.put("错误信息",e.getMessage());
+            }
+        }else{
+            map.put("error",false);
+        }
+        return map;
+    }
 }

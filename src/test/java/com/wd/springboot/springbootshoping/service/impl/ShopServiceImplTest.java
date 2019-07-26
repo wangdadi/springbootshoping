@@ -59,7 +59,7 @@ public class ShopServiceImplTest {
     @Test
     public void updateShop() throws FileNotFoundException{
         Shop shop=new Shop();
-        shop.setShopId(14L);
+        shop.setShopId(2L);
         shop.setShopName("测试店铺修改");
         File shopImage=new File("E:\\测试修改.png");
         InputStream is=new FileInputStream(shopImage);

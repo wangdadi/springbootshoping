@@ -54,7 +54,7 @@ public class ShopDaoTest {
         Assert.assertEquals(1,(long)result);
     }
     @Test
-    @Ignore
+    //@Ignore
     public void updateShop(){
         Shop shop=new Shop();
         shop.setShopId(1L);

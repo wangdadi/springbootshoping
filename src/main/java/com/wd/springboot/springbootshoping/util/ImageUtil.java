@@ -123,7 +123,7 @@ public class ImageUtil {
      * @param storePath
      */
     public static void deleteFileOrPath(String storePath){
-        File fileOrPath=new File(PathUtil.getImageBasePath()+storePath);
+        File fileOrPath=new File(storePath);
         if (fileOrPath.exists()){
             //如果是文件夹
             if (fileOrPath.isDirectory()){
